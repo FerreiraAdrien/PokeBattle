@@ -7,6 +7,10 @@ import {
 } from 'react-router-dom'
 
 import List from '../../components/pokemon/list'
+import Login from '../../components/user/login'
+import Register from '../../components/user/register'
+import Team from '../../components/user/team'
+import History from '../../components/user/history'
 
 const Routes = () => {
   return (
