@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
@@ -15,9 +15,9 @@ const Header = () => {
           <br />
           <Link to={`/`}>Pokemon list</Link>
           <br />
-          <Link to={`/`}>My team</Link>
+          <Link to={`/team`}>My team</Link>
           <br />
-          <Link to={`/`}>My battle history</Link>
+          <Link to={`/history`}>My battle history</Link>
           <CloseMenuStyled>
             <FontAwesomeIcon
               icon={faTimes}
@@ -31,6 +31,11 @@ const Header = () => {
       </Menu>
 
       <HeaderStyled>
+        <UserIconStyled>
+          <Link to={`/login`}>
+            <FontAwesomeIcon icon={faUser} size='2x' />
+          </Link>
+        </UserIconStyled>
         Header
         <OpenMenuStyled>
           <FontAwesomeIcon
@@ -73,13 +78,21 @@ const ContentMenuStyled = styled.div`
 const CloseMenuStyled = styled.div`
   cursor: pointer;
   margin-top: 20px;
+  font-size: 70%;
 `
 
 const OpenMenuStyled = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 10px;
   right: 10px;
+  font-size: 70%;
+`
+
+const UserIconStyled = styled.div`
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  font-size: 70%;
 `
 
 const HeaderStyled = styled.div`

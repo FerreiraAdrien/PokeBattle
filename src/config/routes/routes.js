@@ -17,6 +17,10 @@ const Routes = () => {
     <Router>
       <Switch>
         <Route exact path='/' component={List}></Route>
+        <Route exact path='/team' component={Team}></Route>
+        <Route exact path='/history' component={History}></Route>
+        <Route exact path='/login' component={Login}></Route>
+        <Route exact path='/register' component={Register}></Route>
         <Redirect to='/' />
       </Switch>
     </Router>

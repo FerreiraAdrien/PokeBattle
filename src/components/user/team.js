@@ -1,7 +1,9 @@
 import React from 'react'
 
+import Wrapper from '../wrapper'
+
 const Team = () => {
-  return <div>team</div>
+  return <Wrapper>My team</Wrapper>
 }
 
 export default Team

@@ -1,7 +1,9 @@
 import React from 'react'
 
+import Wrapper from '../wrapper'
+
 const Register = () => {
-  return <div>register</div>
+  return <Wrapper>register</Wrapper>
 }
 
 export default Register

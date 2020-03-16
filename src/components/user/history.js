@@ -1,7 +1,9 @@
 import React from 'react'
 
+import Wrapper from '../wrapper'
+
 const History = () => {
-  return <div>history</div>
+  return <Wrapper>My battle history</Wrapper>
 }
 
 export default History
