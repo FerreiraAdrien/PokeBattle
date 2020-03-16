@@ -13,11 +13,17 @@ const Header = () => {
       <Menu animate={menu} variants={menuVariants}>
         <ContentMenuStyled>
           <br />
-          <Link to={`/`}>Pokemon list</Link>
+          <LinkStyled>
+            <Link to={`/`}>Pokemon list</Link>
+          </LinkStyled>
           <br />
-          <Link to={`/team`}>My team</Link>
+          <LinkStyled>
+            <Link to={`/team`}>My team</Link>
+          </LinkStyled>
           <br />
-          <Link to={`/history`}>My battle history</Link>
+          <LinkStyled>
+            <Link to={`/history`}>My battle history</Link>
+          </LinkStyled>
           <CloseMenuStyled>
             <FontAwesomeIcon
               icon={faTimes}
@@ -75,10 +81,14 @@ const ContentMenuStyled = styled.div`
   font-size: 120%;
 `
 
+const LinkStyled = styled.div`
+  margin: 1% 0;
+`
+
 const CloseMenuStyled = styled.div`
   cursor: pointer;
-  margin-top: 20px;
   font-size: 70%;
+  margin-top: 40%;
 `
 
 const OpenMenuStyled = styled.div`
