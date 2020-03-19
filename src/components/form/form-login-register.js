@@ -11,7 +11,7 @@ const FormLoginRegister = props => {
         <UsernameInput placeholder='Username'></UsernameInput>
       </UsernameInputWrapper>
       <PasswordInputWrapper>
-        <PasswordInput placeholder='Password'></PasswordInput>
+        <PasswordInput placeholder='Password' type='password'></PasswordInput>
       </PasswordInputWrapper>
       <ButtonWrapper>
         <Button>{props.nameButton}</Button>
@@ -34,27 +34,34 @@ const PasswordInputWrapper = styled.div`
 `
 
 const UsernameInput = styled.input`
-  width: 30%;
+  width: 70%;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  font-size: 15px;
+  height: 1.5rem;
+  font-size: 1.2rem;
 `
 
 const PasswordInput = styled.input`
-  width: 30%;
+  width: 70%;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  font-size: 15px;
+  height: 1.5rem;
+  font-size: 1.2rem;
 `
 
 const ButtonWrapper = styled.div``
 
 const Button = styled.button`
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 15px;
+  margin-top: 2rem;
+  width: 70%;
+  background-color: #ee5253;
+  text-transform: uppercase;
+  font-weight: bold;
 `
 
 export default FormLoginRegister
