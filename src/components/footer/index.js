@@ -17,7 +17,7 @@ const FooterStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: relative;
   bottom: 0;
 `
 
