@@ -14,7 +14,7 @@ const Header = () => {
         <ContentMenuStyled>
           <br />
           <LinkStyled>
-            <Link to={`/`}>Pokemon list</Link>
+            <Link to={`/`}>Pokédex</Link>
           </LinkStyled>
           <br />
           <LinkStyled>
