@@ -3,11 +3,14 @@ import './App.css'
 
 import Routes from './config/routes/routes'
 
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
 function App() {
   return (
-    <div className='App'>
+    <Provider store={store}>
       <Routes></Routes>
-    </div>
+    </Provider>
   )
 }
 
