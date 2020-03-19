@@ -8,14 +8,25 @@ const FormLoginRegister = props => {
         <Title>{props.title}</Title>
       </TitleWrapper>
       <UsernameInputWrapper>
-        <UsernameInput placeholder='Username'></UsernameInput>
+        <UsernameInput
+          placeholder='Username'
+          onChange={e => props.setUsername(e.target.value)}
+          type='text'
+        ></UsernameInput>
       </UsernameInputWrapper>
       <PasswordInputWrapper>
-        <PasswordInput placeholder='Password' type='password'></PasswordInput>
+        <PasswordInput
+          placeholder='Password'
+          onChange={e => props.setPassword(e.target.value)}
+          type='password'
+        ></PasswordInput>
       </PasswordInputWrapper>
       <ButtonWrapper>
-        <Button>{props.nameButton}</Button>
+        <Button onClick={() => props.LoginCall()}>{props.nameButton}</Button>
       </ButtonWrapper>
+      <ErrorMessageWrapper>
+        <ErrorMessage id='errorMessage'>{props.errorMessage}</ErrorMessage>
+      </ErrorMessageWrapper>
     </FormWrapper>
   )
 }
@@ -63,5 +74,9 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
 `
+
+const ErrorMessageWrapper = styled.div``
+
+const ErrorMessage = styled.p``
 
 export default FormLoginRegister

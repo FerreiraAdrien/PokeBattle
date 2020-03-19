@@ -23,6 +23,22 @@ const List = () => {
 
   console.log(pokemonList)
 
+  React.useEffect(() => {
+    axios
+      .post('http://51.158.70.36:8080/api/login', {
+        username: 'admin',
+        password: 'adminpasswordbitch'
+      })
+      .then(function(response) {
+        console.log(response)
+        const token = response.data.token
+        localStorage.setItem('x-access-token', token)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  })
+
   return (
     <div>
       <Wrapper>
