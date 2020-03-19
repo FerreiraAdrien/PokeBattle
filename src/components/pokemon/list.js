@@ -5,12 +5,11 @@ import styled from 'styled-components'
 import Wrapper from '../wrapper'
 
 const List = () => {
-
   let pokemonList = []
 
   const promise = new Promise(function(resolve, reject) {
     axios.get('https://pokeapi.co/api/v2/pokemon/?limit=150').then(res => {
-      resolve(res.data.results)  
+      resolve(res.data.results)
     })
   })
 
@@ -18,11 +17,11 @@ const List = () => {
     value.map(pokemon => {
       axios.get(pokemon.url).then(res => {
         pokemonList.push(res.data)
-        })
       })
-  });
+    })
+  })
 
-  console.log(pokemonList);
+  console.log(pokemonList)
 
   return (
     <div>
