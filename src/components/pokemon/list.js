@@ -1,9 +1,29 @@
 import React from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 
 import Wrapper from '../wrapper'
 
 const List = () => {
+
+  let pokemonList = []
+
+  const promise = new Promise(function(resolve, reject) {
+    axios.get('https://pokeapi.co/api/v2/pokemon/?limit=150').then(res => {
+      resolve(res.data.results)  
+    })
+  })
+
+  promise.then(function(value) {
+    value.map(pokemon => {
+      axios.get(pokemon.url).then(res => {
+        pokemonList.push(res.data)
+        })
+      })
+  });
+
+  console.log(pokemonList);
+
   return (
     <div>
       <Wrapper>
@@ -41,6 +61,7 @@ const CardStyled = styled.div`
   margin-left: auto;
   margin-right: auto;
   box-shadow: 3px 3px 10px 5px grey;
+  background-color: white;
 `
 
 const CardHeaderStyled = styled.div`

@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: rgba(200, 214, 229, 0.3);
 }
 
 *:focus {

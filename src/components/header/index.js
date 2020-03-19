@@ -64,7 +64,7 @@ const Menu = styled(motion.div)`
   position: absolute;
   top: 0;
   z-index: 2;
-  background-color: aliceblue;
+  background-color: #ee5253;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,7 +106,8 @@ const UserIconStyled = styled.div`
 `
 
 const HeaderStyled = styled.div`
-  background-color: burlywood;
+  background-color: #ee5253;
+  color: white;
   height: 50px;
   width: 100%;
   display: flex;
