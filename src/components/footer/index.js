@@ -10,7 +10,8 @@ const Footer = () => {
 }
 
 const FooterStyled = styled.div`
-  background-color: grey;
+  background-color: #ee5253;
+  color: white;
   height: 50px;
   width: 100%;
   display: flex;
