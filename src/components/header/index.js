@@ -65,7 +65,7 @@ const Menu = styled(motion.div)`
   text-align: center;
   width: 100%;
   min-height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 2;
   background-color: #ee5253;
