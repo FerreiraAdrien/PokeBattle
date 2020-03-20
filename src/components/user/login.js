@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Wrapper from '../wrapper'
 import FormLoginRegister from '../form/form-login-register'
+import styled from 'styled-components'
 
 const axios = require('axios')
 
@@ -47,8 +48,17 @@ const Login = props => {
         setPassword={setPassword}
         errorMessage={errorMessage}
       ></FormLoginRegister>
+      <TexteWrapper>
+        <Texte>
+          Pas encore de compte ? <a href='/register'>Inscrivez-vous</a>
+        </Texte>
+      </TexteWrapper>
     </Wrapper>
   )
 }
+
+const TexteWrapper = styled.div``
+
+const Texte = styled.p``
 
 export default Login
