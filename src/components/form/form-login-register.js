@@ -8,14 +8,25 @@ const FormLoginRegister = props => {
         <Title>{props.title}</Title>
       </TitleWrapper>
       <UsernameInputWrapper>
-        <UsernameInput placeholder='Username'></UsernameInput>
+        <UsernameInput
+          placeholder='Username'
+          onChange={e => props.setUsername(e.target.value)}
+          type='text'
+        ></UsernameInput>
       </UsernameInputWrapper>
       <PasswordInputWrapper>
-        <PasswordInput placeholder='Password'></PasswordInput>
+        <PasswordInput
+          placeholder='Password'
+          onChange={e => props.setPassword(e.target.value)}
+          type='password'
+        ></PasswordInput>
       </PasswordInputWrapper>
       <ButtonWrapper>
-        <Button>{props.nameButton}</Button>
+        <Button onClick={() => props.LoginCall()}>{props.nameButton}</Button>
       </ButtonWrapper>
+      <ErrorMessageWrapper>
+        <ErrorMessage id='errorMessage'>{props.errorMessage}</ErrorMessage>
+      </ErrorMessageWrapper>
     </FormWrapper>
   )
 }
@@ -34,27 +45,38 @@ const PasswordInputWrapper = styled.div`
 `
 
 const UsernameInput = styled.input`
-  width: 30%;
+  width: 70%;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  font-size: 15px;
+  height: 1.5rem;
+  font-size: 1.2rem;
 `
 
 const PasswordInput = styled.input`
-  width: 30%;
+  width: 70%;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
-  font-size: 15px;
+  height: 1.5rem;
+  font-size: 1.2rem;
 `
 
 const ButtonWrapper = styled.div``
 
 const Button = styled.button`
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 15px;
+  margin-top: 2rem;
+  width: 70%;
+  background-color: #ee5253;
+  text-transform: uppercase;
+  font-weight: bold;
 `
+
+const ErrorMessageWrapper = styled.div``
+
+const ErrorMessage = styled.p``
 
 export default FormLoginRegister

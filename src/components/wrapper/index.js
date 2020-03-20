@@ -13,7 +13,7 @@ const Wrapper = ({ children }) => (
 )
 
 const ContentStyled = styled.section`
-  padding: 20% 5%;
+  padding: 15% 5%;
   text-align: center;
 `
 
