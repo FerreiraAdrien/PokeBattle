@@ -1,14 +1,16 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import i18next from 'i18next'
+import { withTranslation } from 'react-i18next'
 
 import Wrapper from '../wrapper'
 
-const Team = () => {
+const Team = ({ t }) => {
   return (
     <div>
       <Wrapper>
-        <TitlePage>My team</TitlePage>
+        <TitlePage>{t('myteam')}</TitlePage>
         <CardStyled>
           <ImgCard
             src={
@@ -131,4 +133,4 @@ const PokemonType = styled.span`
   border-radius: 20px;
 `
 
-export default Team
+export default withTranslation()(Team)

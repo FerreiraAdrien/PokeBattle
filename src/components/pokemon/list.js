@@ -1,49 +1,42 @@
-import React, { Component } from 'react'
-// import axios from 'axios'
+import React, { userState, useEffect } from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import allTheAction from '../../redux/actions'
+import { bindActionCreators } from 'redux'
 import { setPokemons } from '../../redux/actions/allPokemon'
+import i18n from 'i18next'
+import { withTranslation } from 'react-i18next'
 
 import Wrapper from '../wrapper'
+import allPokemon from '../../redux/reducers/allPokemon'
 
-const List = ({ pokemons, setPokemons }) => {
-  // let pokemonList = []
-  // const promise = new Promise(function(resolve, reject) {
-  //   axios.get('https://pokeapi.co/api/v2/pokemon/?limit=150').then(res => {
-  //     resolve(res.data.results)
-  //   })
-  // })
-  // promise.then(function(value) {
-  //   value.map(pokemon => {
-  //     axios.get(pokemon.url).then(res => {
-  //       pokemonList.push(res.data)
-  //     })
-  //   })
-  // })
-  // console.log(pokemonList)
-
-  const listeBidon = ['1', '2']
-  console.log(pokemons)
-
-  setPokemons(listeBidon)
-  console.log(pokemons)
-
+const List = ({ pokemons, actions }) => {
+  useEffect(() => {
+    actions.allPokemon.getPokemons()
+  }, [])
+  console.log(typeof pokemons)
+  console.log(pokemons.pokemons)
   return (
     <div>
       <Wrapper>
         <TitlePage>Pokédex</TitlePage>
-        <CardStyled>
-          <ImgCard
-            src={
-              'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-            }
-          ></ImgCard>
-          <CardInfos>
-            <PokemonName>Ectoplasma</PokemonName>
-            <PokemonType>Spectre</PokemonType>
-            <PokemonType>Poison</PokemonType>
-          </CardInfos>
-        </CardStyled>
+        {pokemons.pokemons
+          ? pokemons.pokemons.map(pokemon => (
+              <CardStyled key={pokemon.id}>
+                <ImgCard
+                  src={
+                    'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
+                  }
+                ></ImgCard>
+                <CardInfos>
+                  <PokemonName>Ectoplasma</PokemonName>
+                  <PokemonType>Spectre</PokemonType>
+                  <PokemonType>Poison</PokemonType>
+                </CardInfos>
+              </CardStyled>
+            ))
+          : 'no pokemons yet'}
       </Wrapper>
     </div>
   )
@@ -100,12 +93,14 @@ const mapStateToProps = state => {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addPokemon: array => {
-//       dispatch({ type: 'SET_POKEMONS', array: array })
-//     }
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: {
+      allPokemon: bindActionCreators(allTheAction.allPokemon, dispatch)
+    }
+  }
+}
 
-export default connect(mapStateToProps, { setPokemons })(List)
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(List)
+)
