@@ -15,8 +15,11 @@ const List = ({ pokemons, actions }) => {
   useEffect(() => {
     actions.allPokemon.getPokemons()
   }, [])
-  console.log(typeof pokemons)
-  console.log(pokemons.pokemons)
+
+  pokemons.pokemons.map(pokemon => {
+    console.log(pokemon)
+  })
+
   return (
     <div>
       <Wrapper>
@@ -24,15 +27,13 @@ const List = ({ pokemons, actions }) => {
         {pokemons.pokemons
           ? pokemons.pokemons.map(pokemon => (
               <CardStyled key={pokemon.id}>
-                <ImgCard
-                  src={
-                    'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-                  }
-                ></ImgCard>
+                <ImgCard src={pokemon.sprites.front_default}></ImgCard>
                 <CardInfos>
-                  <PokemonName>Ectoplasma</PokemonName>
-                  <PokemonType>Spectre</PokemonType>
-                  <PokemonType>Poison</PokemonType>
+                  <PokemonName>{pokemon.name}</PokemonName>
+                  <PokemonType>{pokemon.types[0].type.name}</PokemonType>
+                  {pokemon.types[1] ? (
+                    <PokemonType>{pokemon.types[1].type.name}</PokemonType>
+                  ) : null}
                 </CardInfos>
               </CardStyled>
             ))

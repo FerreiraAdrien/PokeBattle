@@ -8,8 +8,18 @@ export const setPokemons = pokemons => ({
 })
 
 export const getPokemons = () => dispatch => {
+  let pokemonList = new Array()
+
   axios.get('https://pokeapi.co/api/v2/pokemon/?limit=150').then(res => {
-    console.log(res.data.results)
-    dispatch(setPokemons(res.data.results))
+    res.data.results.map(data => {
+      axios
+        .get(data.url)
+        .then(res => {
+          pokemonList.push(res.data)
+        })
+        .then(() => {
+          dispatch(setPokemons(pokemonList))
+        })
+    })
   })
 }
