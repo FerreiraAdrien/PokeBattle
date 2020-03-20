@@ -1,4 +1,4 @@
-import { ADD_POKEMON, DELETE_POKEMON } from '../../actionTypes/teamPokemon'
+import { ADD_POKEMON, DELETE_POKEMON } from '../../actions/teamPokemon'
 
 let index = 0
 const initialState = {
