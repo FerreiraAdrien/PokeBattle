@@ -39,7 +39,7 @@ const Login = props => {
   return (
     <Wrapper>
       <FormLoginRegister
-        title={'Login'}
+        title={'login'}
         nameButton={'Connexion'}
         LoginCall={LoginCall}
         setUsername={setUsername}

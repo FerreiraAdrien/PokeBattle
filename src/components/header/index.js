@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import i18next from 'i18next'
+import { withTranslation } from 'react-i18next'
 
-const Header = () => {
+const Header = ({ t }) => {
   const [menu, setMenu] = useState('hidden')
 
   return (
@@ -14,15 +16,15 @@ const Header = () => {
         <ContentMenuStyled>
           <br />
           <LinkStyled>
-            <Link to={`/`}>Pokédex</Link>
+            <Link to={`/`}>{t('pokedex')}</Link>
           </LinkStyled>
           <br />
           <LinkStyled>
-            <Link to={`/team`}>My team</Link>
+            <Link to={`/team`}>{t('myteam')}</Link>
           </LinkStyled>
           <br />
           <LinkStyled>
-            <Link to={`/history`}>My battle history</Link>
+            <Link to={`/history`}>{t('battlehistory')}</Link>
           </LinkStyled>
           <CloseMenuStyled>
             <FontAwesomeIcon
@@ -118,4 +120,4 @@ const HeaderStyled = styled.div`
   top: 0;
 `
 
-export default Header
+export default withTranslation()(Header)

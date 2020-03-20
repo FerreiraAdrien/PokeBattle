@@ -3,10 +3,12 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { setPokemons } from '../../redux/actions/allPokemon'
+import i18n from 'i18next'
+import { withTranslation } from 'react-i18next'
 
 import Wrapper from '../wrapper'
 
-const List = ({ pokemons, setPokemons }) => {
+const List = ({ pokemons, setPokemons, t }) => {
   // let pokemonList = []
   // const promise = new Promise(function(resolve, reject) {
   //   axios.get('https://pokeapi.co/api/v2/pokemon/?limit=150').then(res => {
@@ -31,7 +33,7 @@ const List = ({ pokemons, setPokemons }) => {
   return (
     <div>
       <Wrapper>
-        <TitlePage>Pokédex</TitlePage>
+        <TitlePage>{t('pokedex')}</TitlePage>
         <CardStyled>
           <ImgCard
             src={
@@ -108,4 +110,6 @@ const mapStateToProps = state => {
 //   }
 // }
 
-export default connect(mapStateToProps, { setPokemons })(List)
+export default withTranslation()(
+  connect(mapStateToProps, { setPokemons })(List)
+)
