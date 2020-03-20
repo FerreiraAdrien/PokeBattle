@@ -13,12 +13,25 @@ import Team from '../../components/user/team'
 import History from '../../components/user/history'
 
 const Routes = () => {
+  const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        localStorage.getItem('username') ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+        )
+      }
+    />
+  )
+
   return (
     <Router>
       <Switch>
         <Route exact path='/' component={List}></Route>
-        <Route exact path='/team' component={Team}></Route>
-        <Route exact path='/history' component={History}></Route>
+        <PrivateRoute exact path='/team' component={Team}></PrivateRoute>
+        <PrivateRoute exact path='/history' component={History}></PrivateRoute>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/register' component={Register}></Route>
         <Redirect to='/' />
