@@ -14,7 +14,7 @@ const Header = () => {
         <ContentMenuStyled>
           <br />
           <LinkStyled>
-            <Link to={`/`}>Pokemon list</Link>
+            <Link to={`/`}>Pokédex</Link>
           </LinkStyled>
           <br />
           <LinkStyled>
@@ -60,12 +60,13 @@ const Header = () => {
 const Menu = styled(motion.div)`
   text-align: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   position: absolute;
   top: 0;
   z-index: 2;
   background-color: #ee5253;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
 `
@@ -113,6 +114,8 @@ const HeaderStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
 `
 
 export default Header
