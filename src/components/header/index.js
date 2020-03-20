@@ -1,7 +1,18 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons'
+import {
+  faBars,
+  faTimes,
+  faUser,
+  faSignOutAlt
+} from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import i18next from 'i18next'
@@ -10,6 +21,27 @@ import ThemeSwitch from '../themeSwitch'
 
 const Header = ({ t }) => {
   const [menu, setMenu] = useState('hidden')
+
+  const LogOut = () => {
+    localStorage.removeItem('x-access-token')
+    localStorage.removeItem('username')
+  }
+
+  const LoginOrLogoutButton = () => {
+    if (localStorage.getItem('username')) {
+      return (
+        <Link onClick={() => LogOut()} to={`/`}>
+          <FontAwesomeIcon icon={faSignOutAlt} size='2x' />
+        </Link>
+      )
+    } else {
+      return (
+        <Link to={`/login`}>
+          <FontAwesomeIcon icon={faUser} size='2x' />
+        </Link>
+      )
+    }
+  }
 
   return (
     <section>
@@ -42,9 +74,7 @@ const Header = ({ t }) => {
 
       <HeaderStyled>
         <UserIconStyled>
-          <Link to={`/login`}>
-            <FontAwesomeIcon icon={faUser} size='2x' />
-          </Link>
+          <LoginOrLogoutButton></LoginOrLogoutButton>
         </UserIconStyled>
         Header
         <OpenMenuStyled>

@@ -36,8 +36,6 @@ const Register = props => {
         console.log(response)
 
         if (response.data.status === 200) {
-          let username = response.data.data.username
-          localStorage.setItem('username', username)
           props.history.push('/login')
           console.log('ok')
         } else {
