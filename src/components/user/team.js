@@ -11,6 +11,9 @@ const Team = ({ t }) => {
     <div>
       <Wrapper>
         <TitlePage>{t('myteam')}</TitlePage>
+        <EmptyTeam>
+          <EmptyTeamText>Créer votre équipe</EmptyTeamText>
+        </EmptyTeam>
         <CardStyled>
           <ImgCard
             src={
@@ -92,6 +95,25 @@ const TitlePage = styled.h2`
   text-align: center;
   text-transform: uppercase;
 `
+
+const EmptyTeam = styled.div`
+  width: 90%;
+  padding: 5%;
+  border-style: dashed solid;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 3% 0;
+  cursor: pointer;
+`
+
+const EmptyTeamText = styled.div`
+  text-align: center;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+`
+
 const CardStyled = styled.div`
   width: 90%;
   padding: 5%;
