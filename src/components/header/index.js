@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import i18next from 'i18next'
 import { withTranslation } from 'react-i18next'
+import ThemeSwitch from '../themeSwitch'
 
 const Header = ({ t }) => {
   const [menu, setMenu] = useState('hidden')
@@ -35,6 +36,7 @@ const Header = ({ t }) => {
               }}
             />
           </CloseMenuStyled>
+          <ThemeSwitch></ThemeSwitch>
         </ContentMenuStyled>
       </Menu>
 
@@ -63,7 +65,7 @@ const Menu = styled(motion.div)`
   text-align: center;
   width: 100%;
   min-height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 2;
   background-color: #ee5253;

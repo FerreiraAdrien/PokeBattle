@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withTranslation } from 'react-i18next'
 import { Offline, Online } from 'react-detect-offline'
+import axios from 'axios'
 
 import allTheAction from '../../redux/actions'
 import Wrapper from '../wrapper'
@@ -11,6 +12,20 @@ import Wrapper from '../wrapper'
 const List = ({ pokemons, actions }) => {
   useEffect(() => {
     actions.allPokemon.getPokemons()
+
+    axios
+      .post('http://51.158.70.36:8080/api/login', {
+        username: 'admin',
+        password: 'adminpasswordbitch'
+      })
+      .then(function(response) {
+        console.log(response)
+        const token = response.data.token
+        localStorage.setItem('x-access-token', token)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   }, [])
 
   const localStoragePokemonList = JSON.parse(
