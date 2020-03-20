@@ -9,7 +9,8 @@ const Login = props => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const LoginCall = () => {
+  const LoginRegisterCall = () => {
+    console.log('Login call')
     console.log(username)
     console.log(password)
 
@@ -41,7 +42,7 @@ const Login = props => {
       <FormLoginRegister
         title={'login'}
         nameButton={'Connexion'}
-        LoginCall={LoginCall}
+        LoginRegisterCall={LoginRegisterCall}
         setUsername={setUsername}
         setPassword={setPassword}
         errorMessage={errorMessage}
