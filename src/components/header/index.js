@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import i18next from 'i18next'
 import { withTranslation } from 'react-i18next'
+import ThemeSwitch from '../themeSwitch'
 
 const Header = ({ t }) => {
   const [menu, setMenu] = useState('hidden')
@@ -35,6 +36,7 @@ const Header = ({ t }) => {
               }}
             />
           </CloseMenuStyled>
+          <ThemeSwitch></ThemeSwitch>
         </ContentMenuStyled>
       </Menu>
 
