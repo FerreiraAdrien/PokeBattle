@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import allTheAction from '../../redux/actions'
 import { bindActionCreators } from 'redux'
+import { setPokemons } from '../../redux/actions/allPokemon'
+import i18n from 'i18next'
+import { withTranslation } from 'react-i18next'
 
 import Wrapper from '../wrapper'
 import allPokemon from '../../redux/reducers/allPokemon'
@@ -98,4 +101,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(List)
+)
