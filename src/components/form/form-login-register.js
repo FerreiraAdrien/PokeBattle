@@ -22,7 +22,9 @@ const FormLoginRegister = props => {
         ></PasswordInput>
       </PasswordInputWrapper>
       <ButtonWrapper>
-        <Button onClick={() => props.LoginCall()}>{props.nameButton}</Button>
+        <Button onClick={() => props.LoginRegisterCall()}>
+          {props.nameButton}
+        </Button>
       </ButtonWrapper>
       <ErrorMessageWrapper>
         <ErrorMessage id='errorMessage'>{props.errorMessage}</ErrorMessage>

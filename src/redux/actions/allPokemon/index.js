@@ -8,8 +8,30 @@ export const setPokemons = pokemons => ({
 })
 
 export const getPokemons = () => dispatch => {
-  axios.get('https://pokeapi.co/api/v2/pokemon/?limit=150').then(res => {
-    console.log(res.data.results)
-    dispatch(setPokemons(res.data.results))
+  let pokemonList = new Array()
+
+  Array.prototype.sortOn = function(key) {
+    this.sort(function(a, b) {
+      if (a[key] < b[key]) {
+        return -1
+      } else if (a[key] > b[key]) {
+        return 1
+      }
+      return 0
+    })
+  }
+
+  axios.get('https://pokeapi.co/api/v2/pokemon/?limit=151').then(res => {
+    res.data.results.map(data => {
+      axios
+        .get(data.url)
+        .then(res => {
+          pokemonList.push(res.data)
+        })
+        .then(() => {
+          pokemonList.sortOn('id')
+          dispatch(setPokemons(pokemonList))
+        })
+    })
   })
 }
