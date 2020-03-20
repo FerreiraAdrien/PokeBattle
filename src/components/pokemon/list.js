@@ -32,8 +32,6 @@ const List = ({ pokemons, actions }) => {
     localStorage.getItem('pokemonList')
   )
 
-  console.log(localStoragePokemonList)
-
   return (
     <div>
       <Wrapper>

@@ -27,7 +27,6 @@ export const getPokemons = () => dispatch => {
         .get(data.url)
         .then(res => {
           data = res.data
-          console.log(data)
           delete data.abilities
           delete data.base_experience
           delete data.forms
