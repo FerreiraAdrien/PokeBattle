@@ -1,43 +1,61 @@
-import React, { userState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import allTheAction from '../../redux/actions'
 import { bindActionCreators } from 'redux'
-import { setPokemons } from '../../redux/actions/allPokemon'
-import i18n from 'i18next'
 import { withTranslation } from 'react-i18next'
+import { Offline, Online } from 'react-detect-offline'
 
+import allTheAction from '../../redux/actions'
 import Wrapper from '../wrapper'
-import allPokemon from '../../redux/reducers/allPokemon'
 
 const List = ({ pokemons, actions }) => {
   useEffect(() => {
     actions.allPokemon.getPokemons()
   }, [])
 
-  pokemons.pokemons.map(pokemon => {
-    console.log(pokemon)
-  })
+  const localStoragePokemonList = JSON.parse(
+    localStorage.getItem('pokemonList')
+  )
+
+  console.log(localStoragePokemonList)
 
   return (
     <div>
       <Wrapper>
-        <TitlePage>Pokédex</TitlePage>
-        {pokemons.pokemons
-          ? pokemons.pokemons.map(pokemon => (
-              <CardStyled key={pokemon.id}>
-                <ImgCard src={pokemon.sprites.front_default}></ImgCard>
-                <CardInfos>
-                  <PokemonName>{pokemon.name}</PokemonName>
-                  <PokemonType>{pokemon.types[0].type.name}</PokemonType>
-                  {pokemon.types[1] ? (
-                    <PokemonType>{pokemon.types[1].type.name}</PokemonType>
-                  ) : null}
-                </CardInfos>
-              </CardStyled>
-            ))
-          : 'no pokemons yet'}
+        <Online>
+          <TitlePage>Pokédex</TitlePage>
+          {pokemons.pokemons
+            ? pokemons.pokemons.map(pokemon => (
+                <CardStyled key={pokemon.id}>
+                  <ImgCard src={pokemon.sprites.front_default}></ImgCard>
+                  <CardInfos>
+                    <PokemonName>{pokemon.name}</PokemonName>
+                    <PokemonType>{pokemon.types[0].type.name}</PokemonType>
+                    {pokemon.types[1] ? (
+                      <PokemonType>{pokemon.types[1].type.name}</PokemonType>
+                    ) : null}
+                  </CardInfos>
+                </CardStyled>
+              ))
+            : 'no pokemons yet'}
+        </Online>
+        <Offline>
+          <TitlePage>Pokédex Offline</TitlePage>
+          {localStoragePokemonList
+            ? localStoragePokemonList.map(pokemon => (
+                <CardStyled key={pokemon.id}>
+                  <ImgCard src={pokemon.sprites.front_default}></ImgCard>
+                  <CardInfos>
+                    <PokemonName>{pokemon.name}</PokemonName>
+                    <PokemonType>{pokemon.types[0].type.name}</PokemonType>
+                    {pokemon.types[1] ? (
+                      <PokemonType>{pokemon.types[1].type.name}</PokemonType>
+                    ) : null}
+                  </CardInfos>
+                </CardStyled>
+              ))
+            : 'aucun pokemon sauvegardé'}
+        </Offline>
       </Wrapper>
     </div>
   )
