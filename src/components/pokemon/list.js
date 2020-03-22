@@ -19,7 +19,6 @@ const List = ({ pokemons, actions }) => {
         password: 'adminpasswordbitch'
       })
       .then(function(response) {
-        console.log(response)
         const token = response.data.token
         localStorage.setItem('x-access-token', token)
       })
@@ -32,11 +31,39 @@ const List = ({ pokemons, actions }) => {
     localStorage.getItem('pokemonList')
   )
 
+  let pokeName = []
+  for (let p = 0; p < localStoragePokemonList.length; p++) {
+    pokeName.push(localStoragePokemonList[p].name)
+  }
+
+  const [searchTerm, setSearchTerm] = React.useState('')
+  const [searchResults, setSearchResults] = React.useState([])
+  const handleChange = e => {
+    setSearchTerm(e.target.value)
+  }
+  React.useEffect(() => {
+    const results = pokeName.filter(person =>
+      person.toLowerCase().includes(searchTerm)
+    )
+    setSearchResults(results)
+  }, [searchTerm])
+
   return (
     <div>
       <Wrapper>
         <Online>
           <TitlePage>Pokédex</TitlePage>
+          <input
+            type='text'
+            placeholder='Search'
+            value={searchTerm}
+            onChange={handleChange}
+          />
+          <ul>
+            {searchResults.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
           {pokemons.pokemons
             ? pokemons.pokemons.map(pokemon => (
                 <CardStyled key={pokemon.id}>
