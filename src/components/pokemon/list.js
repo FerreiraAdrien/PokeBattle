@@ -12,7 +12,6 @@ import Wrapper from '../wrapper'
 const List = ({ pokemons, actions, t }) => {
   useEffect(() => {
     actions.allPokemon.getPokemons()
-
     axios
       .post('http://51.158.70.36:8080/api/login', {
         username: 'admin',

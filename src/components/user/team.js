@@ -2,92 +2,30 @@ import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import i18next from 'i18next'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { withTranslation } from 'react-i18next'
 
+import allTheAction from '../../redux/actions'
 import Wrapper from '../wrapper'
 
-const Team = ({ t }) => {
+const Team = ({ teams, actions, t }) => {
   return (
-    <div>
-      <Wrapper>
-        <TitlePage>{t('myteam')}</TitlePage>
-        <EmptyTeam>
-          <EmptyTeamText>Créer votre équipe</EmptyTeamText>
-        </EmptyTeam>
-        <CardStyled>
-          <ImgCard
-            src={
-              'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-            }
-          ></ImgCard>
+    <Wrapper>
+      <TitlePage>My Team</TitlePage>
+      {teams.team.map(pokemon => (
+        <CardStyled key={pokemon.id}>
+          <ImgCard src={pokemon.sprites.front_default}></ImgCard>
           <CardInfos>
-            <PokemonName>Ectoplasma</PokemonName>
-            <PokemonType>Spectre</PokemonType>
-            <PokemonType>Poison</PokemonType>
+            <PokemonName>{pokemon.name}</PokemonName>
+            <PokemonType>{pokemon.types[0].type.name}</PokemonType>
+            {pokemon.types[1] ? (
+              <PokemonType>{pokemon.types[1].type.name}</PokemonType>
+            ) : null}
           </CardInfos>
         </CardStyled>
-        <CardStyled>
-          <ImgCard
-            src={
-              'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-            }
-          ></ImgCard>
-          <CardInfos>
-            <PokemonName>Ectoplasma</PokemonName>
-            <PokemonType>Spectre</PokemonType>
-            <PokemonType>Poison</PokemonType>
-          </CardInfos>
-        </CardStyled>
-        <CardStyled>
-          <ImgCard
-            src={
-              'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-            }
-          ></ImgCard>
-          <CardInfos>
-            <PokemonName>Ectoplasma</PokemonName>
-            <PokemonType>Spectre</PokemonType>
-            <PokemonType>Poison</PokemonType>
-          </CardInfos>
-        </CardStyled>
-        <CardStyled>
-          <ImgCard
-            src={
-              'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-            }
-          ></ImgCard>
-          <CardInfos>
-            <PokemonName>Ectoplasma</PokemonName>
-            <PokemonType>Spectre</PokemonType>
-            <PokemonType>Poison</PokemonType>
-          </CardInfos>
-        </CardStyled>
-        <CardStyled>
-          <ImgCard
-            src={
-              'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-            }
-          ></ImgCard>
-          <CardInfos>
-            <PokemonName>Ectoplasma</PokemonName>
-            <PokemonType>Spectre</PokemonType>
-            <PokemonType>Poison</PokemonType>
-          </CardInfos>
-        </CardStyled>
-        <CardStyled>
-          <ImgCard
-            src={
-              'https://www.pokepedia.fr/images/thumb/8/8d/Ectoplasma-RFVF.png/375px-Ectoplasma-RFVF.png'
-            }
-          ></ImgCard>
-          <CardInfos>
-            <PokemonName>Ectoplasma</PokemonName>
-            <PokemonType>Spectre</PokemonType>
-            <PokemonType>Poison</PokemonType>
-          </CardInfos>
-        </CardStyled>
-      </Wrapper>
-    </div>
+      ))}
+    </Wrapper>
   )
 }
 
@@ -155,4 +93,20 @@ const PokemonType = styled.span`
   border-radius: 20px;
 `
 
-export default withTranslation()(Team)
+const mapStateToProps = state => {
+  return {
+    teams: state.teams
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: {
+      allTeam: bindActionCreators(allTheAction.teamPokemon, dispatch)
+    }
+  }
+}
+
+export default withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(Team)
+)
