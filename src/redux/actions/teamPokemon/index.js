@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-export const DELETE_POKEMON = 'DELETE_POKEMON'
-export const ADD_POKEMON = 'ADD_POKEMON'
+export const SET_TEAM = 'SET_TEAM'
 
 export const AddPokemon = () => dispatch => {
   let username = localStorage.getItem('username')
@@ -24,4 +23,9 @@ export const DeletePokemons = pokemon => ({
   payload: {
     pokemon
   }
+})
+
+export const setTeam = team => ({
+  type: SET_TEAM,
+  team
 })
