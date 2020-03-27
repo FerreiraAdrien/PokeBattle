@@ -15,6 +15,8 @@ const ThemeSwitch = ({ actions, t }) => {
       <Light onClick={() => actions.theme.changeTheme(themeLight)}>
         {t('versionR')}
       </Light>
+      <br />
+      <br />
       <Dark onClick={() => actions.theme.changeTheme(themeDark)}>
         {t('versionB')}
       </Dark>
@@ -22,8 +24,9 @@ const ThemeSwitch = ({ actions, t }) => {
   )
 }
 
-const Switcher = styled.button``
-
+const Switcher = styled.div`
+  width: 300px;
+`
 const Light = styled.span`
   font-size: 90%;
   margin: 5% 2%;
@@ -32,9 +35,10 @@ const Light = styled.span`
   background-color: #ee5253;
   border-radius: 20px;
   border: 1px solid black;
+  width: 100%;
 `
 
-const Dark = styled.button`
+const Dark = styled.span`
   font-size: 90%;
   margin: 5% 2%;
   padding: 3px 20px 6px 20px;
@@ -42,6 +46,7 @@ const Dark = styled.button`
   background-color: #3498db;
   border-radius: 20px;
   border: 1px solid black;
+  width: 100%;
 `
 
 const mapDispatchToProps = dispatch => {
