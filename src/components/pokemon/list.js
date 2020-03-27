@@ -10,6 +10,10 @@ import allTheAction from '../../redux/actions'
 import Wrapper from '../wrapper'
 
 const List = ({ pokemons, actions, t }) => {
+  const localStoragePokemonList = JSON.parse(
+    localStorage.getItem('pokemonList')
+  )
+
   useEffect(() => {
     actions.allPokemon.getPokemons()
 
@@ -26,10 +30,6 @@ const List = ({ pokemons, actions, t }) => {
         console.log(error)
       })
   }, [])
-
-  const localStoragePokemonList = JSON.parse(
-    localStorage.getItem('pokemonList')
-  )
 
   return (
     <div>
