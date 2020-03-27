@@ -31,13 +31,13 @@ const Header = ({ t }) => {
     if (localStorage.getItem('username')) {
       return (
         <Link onClick={() => LogOut()} to={`/`}>
-          <FontAwesomeIcon icon={faSignOutAlt} size='2x' />
+          <FontAwesomeIcon icon={faSignOutAlt} size='2x' color='white' />
         </Link>
       )
     } else {
       return (
         <Link to={`/login`}>
-          <FontAwesomeIcon icon={faUser} size='2x' />
+          <FontAwesomeIcon icon={faUser} size='2x' color='white' />
         </Link>
       )
     }
