@@ -52,7 +52,7 @@ const List = ({ pokemons, actions, t }) => {
             : 'no pokemons yet'}
         </Online>
         <Offline>
-          <TitlePage>{t('pokedex')}</TitlePage>
+          <TitlePage>{t('pokedex-offline')}</TitlePage>
           {localStoragePokemonList
             ? localStoragePokemonList.map(pokemon => (
                 <CardStyled key={pokemon.id}>

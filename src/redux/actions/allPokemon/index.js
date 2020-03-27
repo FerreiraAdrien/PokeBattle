@@ -21,34 +21,41 @@ export const getPokemons = () => dispatch => {
     })
   }
 
-  axios.get('https://pokeapi.co/api/v2/pokemon/?limit=151').then(res => {
-    res.data.results.map(data => {
-      axios
-        .get(data.url)
-        .then(res => {
-          data = res.data
-          delete data.abilities
-          delete data.base_experience
-          delete data.forms
-          delete data.game_indices
-          delete data.held_items
-          delete data.moves
-          delete data.species
-          delete data.stats
-          pokemonList.push(data)
-        })
-        .then(() => {
-          pokemonList.sortOn('id')
-          // renvoie à la vue
-          dispatch(setPokemons(pokemonList))
-          // enregistrement dans le localstorage
-          if (
-            localStorage.getItem('pokemonList') == null ||
-            JSON.parse(localStorage.getItem('pokemonList')).length < 150
-          ) {
-            localStorage.setItem('pokemonList', JSON.stringify(pokemonList))
-          }
-        })
+  if (
+    localStorage.getItem('pokemonList') != null &&
+    JSON.parse(localStorage.getItem('pokemonList')).length <= 150
+  ) {
+    dispatch(setPokemons(JSON.parse(localStorage.getItem('pokemonList'))))
+  } else {
+    axios.get('https://pokeapi.co/api/v2/pokemon/?limit=151').then(res => {
+      res.data.results.map(data => {
+        axios
+          .get(data.url)
+          .then(res => {
+            data = res.data
+            delete data.abilities
+            delete data.base_experience
+            delete data.forms
+            delete data.game_indices
+            delete data.held_items
+            delete data.moves
+            delete data.species
+            delete data.stats
+            pokemonList.push(data)
+          })
+          .then(() => {
+            pokemonList.sortOn('id')
+            // renvoie à la vue
+            dispatch(setPokemons(pokemonList))
+            // enregistrement dans le localstorage
+            if (
+              localStorage.getItem('pokemonList') == null ||
+              JSON.parse(localStorage.getItem('pokemonList')).length < 150
+            ) {
+              localStorage.setItem('pokemonList', JSON.stringify(pokemonList))
+            }
+          })
+      })
     })
-  })
+  }
 }
