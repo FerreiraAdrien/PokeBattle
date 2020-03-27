@@ -10,10 +10,6 @@ import allTheAction from '../../redux/actions'
 import Wrapper from '../wrapper'
 
 const List = ({ pokemons, actions, t }) => {
-  const localStoragePokemonList = JSON.parse(
-    localStorage.getItem('pokemonList')
-  )
-
   useEffect(() => {
     actions.allPokemon.getPokemons()
 
@@ -30,6 +26,10 @@ const List = ({ pokemons, actions, t }) => {
         console.log(error)
       })
   }, [])
+
+  const localStoragePokemonList = JSON.parse(
+    localStorage.getItem('pokemonList')
+  )
 
   return (
     <div>
@@ -52,7 +52,7 @@ const List = ({ pokemons, actions, t }) => {
             : 'no pokemons yet'}
         </Online>
         <Offline>
-          <TitlePage>{t('pokedex')}</TitlePage>
+          <TitlePage>{t('pokedex-offline')}</TitlePage>
           {localStoragePokemonList
             ? localStoragePokemonList.map(pokemon => (
                 <CardStyled key={pokemon.id}>

@@ -23,7 +23,7 @@ export const getPokemons = () => dispatch => {
 
   if (
     localStorage.getItem('pokemonList') != null &&
-    JSON.parse(localStorage.getItem('pokemonList')).length == 150
+    JSON.parse(localStorage.getItem('pokemonList')).length <= 150
   ) {
     dispatch(setPokemons(JSON.parse(localStorage.getItem('pokemonList'))))
   } else {
