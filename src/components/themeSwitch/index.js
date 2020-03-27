@@ -9,26 +9,40 @@ import allTheAction from '../../redux/actions'
 
 import { themeLight, themeDark } from '../../config/theme'
 
-const ThemeSwitch = ({ actions }) => {
+const ThemeSwitch = ({ actions, t }) => {
   return (
     <Switcher>
       <Light onClick={() => actions.theme.changeTheme(themeLight)}>
-        Theme Light
+        {t('versionR')}
       </Light>
       <Dark onClick={() => actions.theme.changeTheme(themeDark)}>
-        Theme Dark
+        {t('versionB')}
       </Dark>
     </Switcher>
   )
 }
 
-const Switcher = styled.button`
-  background-color: ${props => props.theme.primary};
+const Switcher = styled.button``
+
+const Light = styled.span`
+  font-size: 90%;
+  margin: 5% 2%;
+  padding: 3px 20px 6px 20px;
+  color: white;
+  background-color: #ee5253;
+  border-radius: 20px;
+  border: 1px solid black;
 `
 
-const Light = styled.button``
-
-const Dark = styled.button``
+const Dark = styled.button`
+  font-size: 90%;
+  margin: 5% 2%;
+  padding: 3px 20px 6px 20px;
+  color: white;
+  background-color: #3498db;
+  border-radius: 20px;
+  border: 1px solid black;
+`
 
 const mapDispatchToProps = dispatch => {
   return {

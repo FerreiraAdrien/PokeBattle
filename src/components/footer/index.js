@@ -22,7 +22,7 @@ const Footer = ({ t }) => {
 }
 
 const FooterStyled = styled.div`
-  background-color: #ee5253;
+  background-color: ${props => props.theme.main};
   color: white;
   height: auto;
   width: 100%;

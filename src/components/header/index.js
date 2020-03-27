@@ -98,7 +98,7 @@ const Menu = styled(motion.div)`
   position: fixed;
   top: 0;
   z-index: 2;
-  background-color: #ee5253;
+  background-color: ${props => props.theme.main};
   display: flex;
   flex: 1;
   align-items: center;
@@ -141,7 +141,7 @@ const UserIconStyled = styled.div`
 `
 
 const HeaderStyled = styled.div`
-  background-color: #ee5253;
+  background-color: ${props => props.theme.main};
   color: white;
   height: 50px;
   width: 100%;

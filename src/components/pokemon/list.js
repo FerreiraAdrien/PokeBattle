@@ -9,7 +9,7 @@ import axios from 'axios'
 import allTheAction from '../../redux/actions'
 import Wrapper from '../wrapper'
 
-const List = ({ pokemons, actions }) => {
+const List = ({ pokemons, actions, t }) => {
   useEffect(() => {
     actions.allPokemon.getPokemons()
 
@@ -35,7 +35,7 @@ const List = ({ pokemons, actions }) => {
     <div>
       <Wrapper>
         <Online>
-          <TitlePage>Pokédex</TitlePage>
+          <TitlePage>{t('pokedex')}</TitlePage>
           {pokemons.pokemons
             ? pokemons.pokemons.map(pokemon => (
                 <CardStyled key={pokemon.id}>
@@ -52,7 +52,7 @@ const List = ({ pokemons, actions }) => {
             : 'no pokemons yet'}
         </Online>
         <Offline>
-          <TitlePage>Pokédex Offline</TitlePage>
+          <TitlePage>{t('pokedex')}</TitlePage>
           {localStoragePokemonList
             ? localStoragePokemonList.map(pokemon => (
                 <CardStyled key={pokemon.id}>
