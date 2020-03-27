@@ -18,13 +18,6 @@ export const AddPokemon = () => dispatch => {
     })
 }
 
-export const DeletePokemons = pokemon => ({
-  type: DELETE_POKEMON,
-  payload: {
-    pokemon
-  }
-})
-
 export const setTeam = team => ({
   type: SET_TEAM,
   team
